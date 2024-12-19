@@ -18,6 +18,11 @@ body {
     gap: 2px;
 }
 
+.testing{
+    color: white;
+
+}
+
 /* Card styles */
 .card {
     background-color: #161616;
