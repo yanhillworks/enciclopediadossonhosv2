@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Attach touchstart event listeners to all cards
         cards.forEach((card) => {
-            card.addEventListener('touchstart', (event) => {
-                event.preventDefault(); // Prevent default touch behavior
+            card.addEventListener('click', () => {
+                //event.preventDefault(); // Prevent default touch behavior
                 activateCard(card);
             });
         });
