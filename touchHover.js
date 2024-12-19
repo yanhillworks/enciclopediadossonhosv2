@@ -1,10 +1,10 @@
+console.log('event running')
 document.addEventListener("DOMContentLoaded", () => {
     // Detect touch devices
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     if (isTouchDevice) {
-        const cards = document.querySelectorAll('.card');
-
+        const container = document.querySelector('.grid-container');
         let activeCard = null; // Track the currently active card
 
         // Function to activate hover effect on a card
@@ -12,16 +12,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (activeCard) {
                 activeCard.classList.remove('active'); // Remove the effect from the previously active card
             }
-            card.classList.add('active'); // Add the effect to the touched card
+            card.classList.add('active'); // Add the effect to the tapped card
             activeCard = card; // Update the active card
         };
 
-        // Attach touchstart event listeners to all cards
-        cards.forEach((card) => {
-            card.addEventListener('click', () => {
-                //event.preventDefault(); // Prevent default touch behavior
+        // Use event delegation to handle dynamically added cards
+        container.addEventListener('pointerdown', (event) => {
+            const card = event.target.closest('.card'); // Check if the clicked element is a card
+            if (card) {
+                event.preventDefault(); // Prevent default touch behavior
                 activateCard(card);
-            });
+            }
         });
     }
 });
