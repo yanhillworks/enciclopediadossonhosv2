@@ -12,13 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (activeCard) {
                 activeCard.classList.remove('active'); // Remove the effect from the previously active card
             }
-            card.classList.add('active'); // Add the effect to the clicked card
+            card.classList.add('active'); // Add the effect to the touched card
             activeCard = card; // Update the active card
         };
 
-        // Attach click event listeners to all cards
+        // Attach touchstart event listeners to all cards
         cards.forEach((card) => {
-            card.addEventListener('click', () => {
+            card.addEventListener('touchstart', (event) => {
+                event.preventDefault(); // Prevent default touch behavior
                 activateCard(card);
             });
         });
